@@ -1,0 +1,90 @@
+.container__vehicle-list {
+    .vehicle-list__header{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        padding: 20px 40px;
+        .vehicle-list__add{
+            max-width: 200px;
+        }
+    }
+    .vehicle-list__cards-container {
+        display: grid;
+        gap: 20px;
+        padding: 40px;
+    }
+
+    @media (min-width: 1600px) {
+        .vehicle-list__cards-container {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+     @media (min-width: 1024px) and (max-width: 1600px) {
+        .vehicle-list__cards-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .vehicle-list__cards-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .vehicle-list__cards-container {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.upload {
+    display: none;
+
+    &__multiple {
+        display: flex;
+        border-radius: 0.5rem;
+        background: var(--surface-surface-reverse);
+        align-items: center;
+        user-select: none;
+        cursor: pointer;
+        color: var(--text-text-neutral-secondary);
+        font-size: 0.875rem;
+        font-weight: 500;
+        max-width: 34rem;
+
+        &-error {
+            border-color: var(--text-text-destructive-default);
+        }
+
+
+        .text__1 {
+            width: 30%;
+            height: 42px;
+            background-color: #6838C9;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .text__2 {
+            padding: 0.5rem 1rem;
+            width: 70%;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            height: 42px;
+            background-color: #EDEDED;
+            color: #363636;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__icon {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+}

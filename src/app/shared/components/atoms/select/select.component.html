@@ -1,0 +1,33 @@
+<div
+    class="container"
+    (click)="toggleOptions($event)"
+    [ngClass]="{
+        disabled: readonly,
+        container__error: error,
+    }">
+    <span
+        class="container__span"
+        [ngClass]="{
+            'container__span-active': data.selected,
+            'container__span-inactive': readonly,
+        }"
+        >{{ data.selected?.label ?? 'Seleccionar' }}</span
+    >
+    <img class="container__img" src="/assets/icons/select/expand-more.svg" alt="expand more" />
+
+    <div
+        #options
+        class="container__options options"
+        [ngClass]="{
+            'options-active': showOptions,
+        }">
+        @for (option of data.options; track $index) {
+            <span
+                class="options__option"
+                [ngClass]="{ 'options__option-active': selectedOne === option || data.selected === option }"
+                (click)="selectOption(option, $event)">
+                {{ option.label }}
+            </span>
+        }
+    </div>
+</div>

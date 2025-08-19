@@ -1,0 +1,31 @@
+.loader
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    gap: 1.5rem
+    border-radius: 0.6rem
+    background-color: white
+    padding: 2rem 0
+
+    &__spinner
+        width: 4.125rem
+        height: 4.125rem
+        border: 7px solid var(--primary-500)
+        border-right-color: var(--surface-surface-brand-primary)
+        border-radius: 50%
+        animation: spin 1s linear infinite
+
+    &__text
+        color: black
+        font-size: 1rem
+        font-style: normal
+        font-weight: 700
+        line-height: 1.5rem
+
+@keyframes spin
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(1turn)
+

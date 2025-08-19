@@ -1,0 +1,95 @@
+
+<div class="container__vehicle-list">
+    <div class="vehicle-list__header">
+        <div class="vehicle-list__add">
+            <app-button [data]="BUTTON_DATA.AGREGAR" (click)="agregar()" />
+        </div>
+    </div>
+    <div class="vehicle-list__cards-container">
+        @for (item of vehicles; track $index) {
+            <app-card
+                [img]="item.img"
+                [title]="item.brand + ' ' + item.model"
+                [subtitle]="item.useType + ' ' + item.year "
+                [description]="item.description"
+            >
+                <div footer class="footer-button">
+                    <app-button (click)="edit(item)" [data]="BUTTON_DATA.EDITAR" />
+                    <app-button (click)="delete(item)" [data]="BUTTON_DATA.ELIMINAR" />
+                </div>
+            </app-card>
+        }
+    </div>
+</div>
+
+<p-dialog [header]="modalTitle" [modal]="true" [(visible)]="showModalForm">
+    <!-- <span class="p-text-secondary block mb-5">Update your information.</span> -->
+    <div class="flex flex-column align-items-center gap-3 mb-3">
+        <div class="flex gap-3">
+            <app-input
+                label="Marca"
+                labelAlternative="Marca"
+                placeholder="Marca"
+                size="large"
+                [control]="formGroup.controls['brand']"
+            ></app-input>
+            <app-input
+                label="Modelo"
+                labelAlternative="Modelo"
+                [control]="formGroup.controls['model']"
+                placeholder="Modelo"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3">
+            <app-input-number
+                label="Año"
+                labelAlternative="Año"
+                [min]="2000"
+                [max]="2030"
+                [control]="formGroup.controls['year']"
+                placeholder="Año"
+                size="large"
+            ></app-input-number>
+            <app-input
+                label="Tipo de uso"
+                labelAlternative="Tipo de uso"
+                [control]="formGroup.controls['useType']"
+                placeholder="Tipo de uso"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3">
+            <app-input-number
+                label="Precio base"
+                labelAlternative="Precio base"
+                [control]="formGroup.controls['basePrice']"
+                placeholder="Precio base"
+                size="large"
+            ></app-input-number>
+            <app-input
+                label="Descripcion"
+                labelAlternative="Descripcion"
+                [control]="formGroup.controls['description']"
+                placeholder="Descripcion"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3">
+            <div class="upload__up">
+                @if(this.selectedFile){
+                    <span>{{selectedFile.name}} <i (click)="deleteFile()" style="cursor: pointer" class="pi pi-trash"></i></span>
+                } @else {
+                    <input class="upload" type="file" id="data-image" (change)="onFileSelected($event)" #fileInput multiple/>
+                        <label class="upload__multiple" for="data-image">
+                        <div class="text__1">Seleccionar archivos</div>
+                        <div class="text__2">Sin archivos seleccionados</div>
+                    </label>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <app-button [data]="BUTTON_DATA.GUARDAR" (click)="saveForm()" [disabled]="formGroup.invalid"/>
+    </div>
+</p-dialog>

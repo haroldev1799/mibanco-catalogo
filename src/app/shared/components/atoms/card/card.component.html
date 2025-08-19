@@ -1,0 +1,14 @@
+
+
+
+<p-card [header]="title" [subheader]="subtitle" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" height="190" [src]="img" />
+    </ng-template>
+    <p>
+        {{description}}
+    </p>
+    <ng-template pTemplate="footer">
+        <ng-content class="button-footer" select="[footer]"></ng-content>
+    </ng-template>
+</p-card>
